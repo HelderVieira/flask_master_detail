@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+    <head>
+      <title>User Form Demo</title>
+    </head>
+    <body>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <div class="alert {% if result %} alert-danger {% else %} alert-info {% endif %}">
+            <ul>
+                {% for message in messages %}
+                <li>{{ message }} </li>
+                {% endfor %}
+
+            </ul>
+        </div>
+        {% endif %}
+    {% endwith %}  
+
+
+
+
+
+
+    <form action="" method="POST">
+
+        {{form.hidden_tag()}}
+
+        {{ form.username.label }}: {{ form.username }}
+        <div data-toggle="fieldset" id="phone-fieldset">
+            {{ form.phone.label }} <button type="button" id="fieldset-add-row">+</button>
+            <table>
+                <tr>
+                    <th>Type</th>
+                    <th>Number</th>
+                    <th>Extension</th>
+                    <th></th>
+                </tr>
+                <tbody id="fieldset">
+                
+                {% for phone in form.phone %}
+                <tr id="fieldset-entry">
+                    <td>{{ phone.phonetype }}</td>
+                    <td>{{ phone.number }}</td>
+                    <td>{{ phone.ext }}</td>
+                    <td><button type="button" data-toggle="fieldset-remove-row" id="phone-{{loop.index0}}-remove">-</button></td>
+                </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+        {{ form.submit }}
+
+
+    </form>
+
+
+        <script src="{{ url_for("static", filename="js/jquery-1.10.2.min.js") }}"></script>
+        <script src="{{ url_for("static", filename="js/page.js") }}"></script>
+    </body>
+</html>
