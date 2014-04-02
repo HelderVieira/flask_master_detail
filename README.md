@@ -11,6 +11,8 @@ Instalação
 Baixe o projeto, e crie um ambiente virtual (virtualenv) na pasta do projeto com 
 os requisitos listados em 'requirements.txt'.
 
+    $ git clone https://github.com/HelderVieira/flask_master_detail.git
+    $ cd flask_master_detail
     $ virtualenv env
     $ ./env/bin/pip install -r requirements.txt
 
